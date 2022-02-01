@@ -3,8 +3,7 @@
 <suite name="All Test Suite" thread-count="2">
     <test verbose="2" preserve-order="true" name="C:/myFIles/Github/ngframework" >
         <classes>
-            <class name="com.uiautomation.tests.HomepageTests"/>
-            <class name="com.uiautomation.tests.LoginpageTests"/>
+            <class name="com.uiautomation.tests.OrangeHRMTests"/>
         </classes>
     </test>
 </suite>
