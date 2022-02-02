@@ -1,6 +1,8 @@
 package com.uiautomation.tests;
 
+import com.uiautomation.pages.OrangeHRMHomePage;
 import com.uiautomation.pages.OrangeHRMLoginPage;
+import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
 public final class OrangeHRMTests extends BaseTest {
@@ -9,8 +11,10 @@ public final class OrangeHRMTests extends BaseTest {
 
     @Test
     public void loginLogoutTest(){
-        OrangeHRMLoginPage ohlp = new OrangeHRMLoginPage();
-        ohlp.enterUsername("Admin").enterPassword("admin123").clickLogin();
+        String title = new OrangeHRMLoginPage().enterUsername("Admin").enterPassword("admin123").clickLogin()
+                        .clickWelcome().clickLogout()
+                        .getPageTitle();
+        Assertions.assertThat(title).as("Verify login page title is %s","OrangeHR").isEqualTo("OrangeHR");
     }
 
 
