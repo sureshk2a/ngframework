@@ -1,7 +1,8 @@
 package com.uiautomation.driver;
 
 import com.uiautomation.constants.FrameworkConstants;
-import com.uiautomation.utils.ReadPropertyFile;
+import com.uiautomation.enums.ConfigProperties;
+import com.uiautomation.utils.PropertyUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -15,7 +16,7 @@ public final class Driver {
             System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromedriverPath());
             WebDriver driver = new ChromeDriver();
             DriverManager.setDriver(driver);
-            DriverManager.getDriver().get(ReadPropertyFile.get("url"));
+            DriverManager.getDriver().get(PropertyUtils.get(ConfigProperties.URL));
     }
 
     public static void quitDriver(){

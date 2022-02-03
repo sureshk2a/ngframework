@@ -13,7 +13,7 @@ public final class OrangeHRMTests extends BaseTest {
     public void loginLogoutTest(){
         String title = new OrangeHRMLoginPage().enterUsername("Admin").enterPassword("admin123").clickLogin()
                         .clickWelcome().clickLogout()
-                        .getPageTitle();
+                        .getTitle();
         Assertions.assertThat(title).as("Verify login page title is %s","OrangeHR").isEqualTo("OrangeHR");
     }
 

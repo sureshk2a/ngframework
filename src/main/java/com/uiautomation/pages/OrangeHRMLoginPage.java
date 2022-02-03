@@ -1,31 +1,32 @@
 package com.uiautomation.pages;
 
 import com.uiautomation.driver.DriverManager;
+import com.uiautomation.enums.WaitStrategy;
 import org.openqa.selenium.By;
 
-public class OrangeHRMLoginPage {
+public final class OrangeHRMLoginPage extends BasePage{
 
-    private final By textbox_username = By.id("txtUsername");
-    private final By textbox_password = By.xpath("//input[@id='txtPassword' and @type='password']");
-    private final By button_login = By.id("btnLogin");
+    private final By textboxUsername = By.id("txtUsername");
+    private final By textboxPassword = By.xpath("//input[@id='txtPassword' and @type='password']");
+    private final By buttonLogin = By.id("btnLogin");
 
     public OrangeHRMLoginPage enterUsername(String username){
-        DriverManager.getDriver().findElement(textbox_username).sendKeys(username);
+        sendKeys(textboxUsername,username, WaitStrategy.PRESENCE);
         return this;
     }
 
     public OrangeHRMLoginPage enterPassword(String password){
-        DriverManager.getDriver().findElement(textbox_password).sendKeys(password);
+        sendKeys(textboxPassword,password,WaitStrategy.PRESENCE);
         return this;
     }
 
     public OrangeHRMHomePage clickLogin(){
-        DriverManager.getDriver().findElement(button_login).click();
+        click(buttonLogin,WaitStrategy.CLICKABLE);
         return new OrangeHRMHomePage();
     }
 
-    public String getPageTitle(){
-        return DriverManager.getDriver().getTitle();
+    public String getTitle(){
+        return getPageTitle();
     }
 
 

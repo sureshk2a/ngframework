@@ -1,16 +1,14 @@
 package com.uiautomation.utils;
 
 import com.uiautomation.constants.FrameworkConstants;
+import com.uiautomation.enums.ConfigProperties;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Properties;
+import java.util.*;
 
-public final class ReadPropertyFile {
-    private ReadPropertyFile(){}
+public final class PropertyUtils {
+    private PropertyUtils(){}
 
     private static Properties prop = new Properties();
     private static final Map<String,String> CONFIGMAP = new HashMap<>();
@@ -27,12 +25,12 @@ public final class ReadPropertyFile {
 
     }
 
-    public static String get(String key) throws Exception {
+    public static String get(ConfigProperties key) throws Exception {
 
-        if(Objects.isNull(CONFIGMAP.get(key)) || Objects.isNull(key)){
+        if(Objects.isNull(CONFIGMAP.get(key)) || Objects.isNull(CONFIGMAP.get(key))){
             throw new Exception("The property "+key+" is not found, please check config.properties");
         }
-        return CONFIGMAP.get(key);
+        return CONFIGMAP.get(key.name().toLowerCase());
 
     }
 
