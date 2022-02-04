@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" thread-count="2">
+<suite name="All Test Suite" thread-count="1" parallel="methods">
     <test verbose="2" preserve-order="true" name="C:/myFIles/Github/ngframework" >
         <classes>
             <class name="com.uiautomation.tests.OrangeHRMTests"/>

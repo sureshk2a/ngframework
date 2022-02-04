@@ -27,7 +27,7 @@ public final class PropertyUtils {
 
     public static String get(ConfigProperties key) throws Exception {
 
-        if(Objects.isNull(CONFIGMAP.get(key)) || Objects.isNull(CONFIGMAP.get(key))){
+        if(Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name().toLowerCase()))){
             throw new Exception("The property "+key+" is not found, please check config.properties");
         }
         return CONFIGMAP.get(key.name().toLowerCase());
