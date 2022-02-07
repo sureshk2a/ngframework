@@ -18,6 +18,15 @@ public final class OrangeHRMTests extends BaseTest {
         Assertions.assertThat(title).as("Verify login page title is %s","OrangeHRM").isEqualTo("OrangeHRM");
     }
 
+    @Test
+    public void test1(){
+        System.out.println("This is a demo test1");
+    }
+
+    @Test
+    public void test2(){
+        System.out.println("This is a demo test2");
+    }
 
     @DataProvider(name = "loginTestDataProvider",parallel = true)
     public Object[][] getData(){
