@@ -31,7 +31,7 @@ public class Listener implements ITestListener, ISuiteListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-        ExtentReport.createTest(result.getMethod().getMethodName());
+        ExtentReport.createTest(result.getMethod().getDescription());
     }
 
     @Override

@@ -8,7 +8,6 @@ import com.uiautomation.constants.FrameworkConstants;
 
 import java.awt.*;
 import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
 
 public final class ExtentReport {
