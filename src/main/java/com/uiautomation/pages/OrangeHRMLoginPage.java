@@ -1,7 +1,8 @@
 package com.uiautomation.pages;
 
-import com.uiautomation.driver.DriverManager;
 import com.uiautomation.enums.WaitStrategy;
+import com.uiautomation.reports.ExtentLogger;
+import com.uiautomation.reports.ExtentManager;
 import org.openqa.selenium.By;
 
 public final class OrangeHRMLoginPage extends BasePage{
@@ -10,18 +11,18 @@ public final class OrangeHRMLoginPage extends BasePage{
     private final By textboxPassword = By.xpath("//input[@id='txtPassword' and @type='password']");
     private final By buttonLogin = By.id("btnLogin");
 
-    public OrangeHRMLoginPage enterUsername(String username){
-        sendKeys(textboxUsername,username, WaitStrategy.PRESENCE);
+    public OrangeHRMLoginPage enterUsername(String username) throws Exception {
+        sendKeys(textboxUsername,username, WaitStrategy.PRESENCE,"Username TextBox");
         return this;
     }
 
-    public OrangeHRMLoginPage enterPassword(String password){
-        sendKeys(textboxPassword,password,WaitStrategy.PRESENCE);
+    public OrangeHRMLoginPage enterPassword(String password) throws Exception {
+        sendKeys(textboxPassword,password,WaitStrategy.PRESENCE,"Password TextBox");
         return this;
     }
 
-    public OrangeHRMHomePage clickLogin(){
-        click(buttonLogin,WaitStrategy.CLICKABLE);
+    public OrangeHRMHomePage clickLogin() throws Exception {
+        click(buttonLogin,WaitStrategy.CLICKABLE,"Login button");
         return new OrangeHRMHomePage();
     }
 

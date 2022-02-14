@@ -2,6 +2,10 @@ package com.uiautomation.enums;
 
 public enum ConfigProperties {
     URL,
-    BROWSER
+    BROWSER,
+    OVERRIDEREPORTS,
+    PASSEDTESTSCREENSHOTS,
+    FAILEDTESTSCREENSHOTS,
+    SKIPPEDTESTSCREENSHOTS
 
 }

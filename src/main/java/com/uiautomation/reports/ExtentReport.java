@@ -1,8 +1,10 @@
 package com.uiautomation.reports;
 
 import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.uiautomation.constants.FrameworkConstants;
 
 import java.awt.*;
 import java.io.File;
@@ -13,11 +15,15 @@ public final class ExtentReport {
 
     private ExtentReport(){}
 
-    private static  ExtentReports extent = new ExtentReports();
+    private static ExtentReports extent;
+    public static ExtentTest test;
+    public static String reportPath;
 
-    public static void initReports(){
+    public static void initReports() throws Exception {
         if(Objects.isNull(extent)){
-            ExtentSparkReporter spark = new ExtentSparkReporter("index.html");
+            extent = new ExtentReports();
+            reportPath = FrameworkConstants.getExtentReportPath();
+            ExtentSparkReporter spark = new ExtentSparkReporter(FrameworkConstants.getExtentReportPath());
             extent.attachReporter(spark);
             spark.config().setTheme(Theme.STANDARD);
             spark.config().setDocumentTitle("Automation Report");
@@ -25,17 +31,19 @@ public final class ExtentReport {
         }
     }
 
-    public static void flushReport() throws IOException {
+    public static void flushReport() throws Exception {
         if(Objects.nonNull(extent)){
             //TEARDOWN
             extent.flush();
-            //Open the file in default browser
-            Desktop.getDesktop().browse(new File("index.html").toURI());
         }
+        //Open the file in default browser
+        Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportPath()).toURI());
     }
 
     public static void createTest(String testName){
-        extent.createTest(testName);
+       ExtentTest test = extent.createTest(testName);
+       ExtentManager.setExtTest(test);
     }
+
 
 }
