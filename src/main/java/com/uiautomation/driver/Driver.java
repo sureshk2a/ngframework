@@ -3,6 +3,9 @@ package com.uiautomation.driver;
 import com.uiautomation.constants.FrameworkConstants;
 import com.uiautomation.enums.ConfigProperties;
 import com.uiautomation.utils.PropertyUtils;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,7 +21,8 @@ public final class Driver {
     	
     	if(Objects.isNull(DriverManager.getDriver())) {
     		if(browser.equalsIgnoreCase("chrome")) {
-        		System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromedriverPath());
+        		//System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromedriverPath());
+    			WebDriverManager.chromedriver().setup();
         		ChromeOptions options = new ChromeOptions();
         		options.addArguments("--headless");
                 WebDriver driver = new ChromeDriver(options);
@@ -26,7 +30,8 @@ public final class Driver {
                 //
                 DriverManager.getDriver().get(PropertyUtils.get(ConfigProperties.URL));
         	}else if(browser.equalsIgnoreCase("firefox")) {
-        		System.setProperty("webdriver.gecko.driver", FrameworkConstants.getGeckodriverPath());
+        		//System.setProperty("webdriver.gecko.driver", FrameworkConstants.getGeckodriverPath());
+        		WebDriverManager.firefoxdriver().setup();
                 WebDriver driver = new FirefoxDriver();
                 DriverManager.setDriver(driver);
                 DriverManager.getDriver().get(PropertyUtils.get(ConfigProperties.URL));
