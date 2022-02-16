@@ -1,8 +1,6 @@
 package com.uiautomation.pages;
 
 import com.uiautomation.enums.WaitStrategy;
-import com.uiautomation.reports.ExtentLogger;
-import com.uiautomation.reports.ExtentManager;
 import org.openqa.selenium.By;
 
 public final class OrangeHRMLoginPage extends BasePage{

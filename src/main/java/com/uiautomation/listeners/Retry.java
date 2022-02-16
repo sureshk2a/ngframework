@@ -3,17 +3,26 @@ package com.uiautomation.listeners;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
+import com.uiautomation.enums.ConfigProperties;
+import com.uiautomation.utils.PropertyUtils;
+
 public class Retry implements IRetryAnalyzer {
 
-    int counter = 0;
-    int limit = 2;
+    private int counter = 0;
+    private int limit = 1;
 
     @Override
     public boolean retry(ITestResult iTestResult) {
-        if(counter<limit){
-            counter++;
-            return true;
-        }
-        return false;
+    	boolean value = false;
+    	try {
+			if(PropertyUtils.get(ConfigProperties.RETRYFAILEDTESTS).equalsIgnoreCase("yes")) {
+				value = counter<limit;
+		        counter++;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	return value;
+        
     }
 }

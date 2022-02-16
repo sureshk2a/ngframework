@@ -1,5 +1,6 @@
 package com.uiautomation.listeners;
 
+import com.uiautomation.constants.FrameworkConstants;
 import com.uiautomation.utils.ExcelUtils;
 import org.testng.IMethodInstance;
 import org.testng.IMethodInterceptor;
@@ -19,7 +20,7 @@ public class MethodInterceptor implements IMethodInterceptor {
         List<Map<String,String>> lis = null;
 
         try {
-            lis = ExcelUtils.getTestDetails("RUNMANAGER");
+            lis = ExcelUtils.getTestDetails(FrameworkConstants.getRunManagerSheet());
         } catch (IOException e) {
             e.printStackTrace();
         }

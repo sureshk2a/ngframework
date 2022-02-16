@@ -35,7 +35,7 @@ public final class ExtentReport {
             //TEARDOWN
             extent.flush();
         }
-        //Open the file in default browser
+        ExtentManager.unload();
         Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportPath()).toURI());
     }
 

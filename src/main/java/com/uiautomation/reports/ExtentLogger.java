@@ -1,12 +1,9 @@
 package com.uiautomation.reports;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
-import com.uiautomation.driver.DriverManager;
 import com.uiautomation.enums.ConfigProperties;
 import com.uiautomation.utils.PropertyUtils;
 import com.uiautomation.utils.ScreenshotUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 
 public final class ExtentLogger {
 
@@ -36,7 +33,7 @@ public final class ExtentLogger {
         }
     }
     public static void skip(String message,boolean isScreenshotRequired) throws Exception {
-        if(PropertyUtils.get(ConfigProperties.SKIPPEDTESTSCREENSHOTS).equalsIgnoreCase("yes")){
+        if(PropertyUtils.get(ConfigProperties.SKIPPEDTESTSSCREENSHOTS).equalsIgnoreCase("yes")){
             ExtentManager.getExtTest().skip(message, MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
         }else {
             skip(message);
