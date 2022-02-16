@@ -37,3 +37,5 @@ buildNumber.properties
 
 #intellij idea files
 .idea/
+test-output/
+extent-test-reports/

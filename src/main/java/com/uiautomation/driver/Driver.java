@@ -5,6 +5,7 @@ import com.uiautomation.enums.ConfigProperties;
 import com.uiautomation.utils.PropertyUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.Objects;
@@ -18,7 +19,9 @@ public final class Driver {
     	if(Objects.isNull(DriverManager.getDriver())) {
     		if(browser.equalsIgnoreCase("chrome")) {
         		System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromedriverPath());
-                WebDriver driver = new ChromeDriver();
+        		ChromeOptions options = new ChromeOptions();
+        		options.addArguments("--headless");
+                WebDriver driver = new ChromeDriver(options);
                 DriverManager.setDriver(driver);
                 DriverManager.getDriver().get(PropertyUtils.get(ConfigProperties.URL));
         	}else if(browser.equalsIgnoreCase("firefox")) {
