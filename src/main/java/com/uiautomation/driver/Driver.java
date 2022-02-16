@@ -23,6 +23,7 @@ public final class Driver {
         		options.addArguments("--headless");
                 WebDriver driver = new ChromeDriver(options);
                 DriverManager.setDriver(driver);
+                //
                 DriverManager.getDriver().get(PropertyUtils.get(ConfigProperties.URL));
         	}else if(browser.equalsIgnoreCase("firefox")) {
         		System.setProperty("webdriver.gecko.driver", FrameworkConstants.getGeckodriverPath());
