@@ -5,6 +5,8 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.uiautomation.constants.FrameworkConstants;
+import com.uiautomation.enums.ConfigProperties;
+import com.uiautomation.utils.PropertyUtils;
 
 import java.awt.*;
 import java.io.File;
@@ -36,7 +38,11 @@ public final class ExtentReport {
             extent.flush();
         }
         ExtentManager.unload();
-        Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportPath()).toURI());
+        
+        if(PropertyUtils.get(ConfigProperties.OPENREPORTAFTERTEST).equalsIgnoreCase("yes")) {
+        	Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportPath()).toURI());
+        }
+        
     }
 
     public static void createTest(String testName){

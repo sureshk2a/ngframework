@@ -2,6 +2,8 @@ package com.uiautomation.listeners;
 
 import com.uiautomation.reports.ExtentLogger;
 import com.uiautomation.reports.ExtentReport;
+import com.uiautomation.utils.EmailUtils;
+
 import org.testng.*;
 
 import java.io.IOException;
@@ -22,6 +24,7 @@ public class Listener implements ITestListener, ISuiteListener {
     public void onFinish(ISuite suite) {
         try {
             ExtentReport.flushReport();
+            EmailUtils.mailTestReport();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
