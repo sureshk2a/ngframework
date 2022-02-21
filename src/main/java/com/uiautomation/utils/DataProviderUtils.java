@@ -30,8 +30,6 @@ public final class DataProviderUtils {
                 smalllist.add(dataMap);
             }
         }
-
-        
         return smalllist.toArray();
     }
 
