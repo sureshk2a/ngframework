@@ -6,7 +6,8 @@
 trigger:
 - main
 
-pool: LocalHostAzure
+pool:
+ vmImage: 'ubuntu-latest'
 
 steps:
 - task: Maven@3
