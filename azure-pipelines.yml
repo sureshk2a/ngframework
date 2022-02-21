@@ -6,7 +6,7 @@
 trigger:
 - main
 
-pool: LocalHostAzure
+pool: ubuntu:latest
 
 steps:
 - task: Maven@3
