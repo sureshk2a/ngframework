@@ -9,6 +9,7 @@
     <test verbose="2" preserve-order="true" name="C:/myFIles/Github/ngframework" >
         <classes>
             <class name="com.uiautomation.tests.OrangeHRMTests"/>
+            <class name="com.uiautomation.tests.AmazonTests"/>
         </classes>
     </test>
 </suite>
