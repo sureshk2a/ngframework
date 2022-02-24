@@ -1,5 +1,6 @@
 package com.uiautomation.listeners;
 
+import com.uiautomation.annotation.FrameworkAnnotation;
 import com.uiautomation.reports.ExtentLogger;
 import com.uiautomation.reports.ExtentReport;
 import com.uiautomation.utils.EmailUtils;
@@ -35,6 +36,12 @@ public class Listener implements ITestListener, ISuiteListener {
     @Override
     public void onTestStart(ITestResult result) {
         ExtentReport.createTest(result.getMethod().getDescription());
+        
+        //Add values from custom annotation
+        ExtentReport.addAuthors(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class)
+        .author());
+        ExtentReport.addCategory(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class)
+                .category());
     }
 
     @Override

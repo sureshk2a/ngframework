@@ -5,6 +5,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.uiautomation.constants.FrameworkConstants;
+import com.uiautomation.enums.CategoryType;
 import com.uiautomation.enums.ConfigProperties;
 import com.uiautomation.utils.PropertyUtils;
 
@@ -50,5 +51,29 @@ public final class ExtentReport {
        ExtentManager.setExtTest(test);
     }
 
+    public static void addAuthors(String[] authors) {
+    	
+    	for(String author : authors) {
+    		ExtentManager.getExtTest().assignAuthor(author);
+    	}
+    	
+    }
 
+    public static void addCategory(CategoryType[] categories) {
+    	
+    	for(CategoryType category : categories) {
+    		ExtentManager.getExtTest().assignCategory(category.toString());
+    	}
+    	
+    }
+    
+    
 }
+
+
+
+
+
+
+
+
