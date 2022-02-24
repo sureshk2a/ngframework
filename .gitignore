@@ -40,3 +40,7 @@ buildNumber.properties
 test-output/
 extent-test-reports/
 /bin/
+.classpath
+.project
+.settings/org.eclipse.jdt.core.prefs
+index.html
