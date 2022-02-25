@@ -11,6 +11,7 @@ import com.uiautomation.utils.PropertyUtils;
 
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
 
 public final class ExtentReport {
@@ -21,7 +22,7 @@ public final class ExtentReport {
     public static ExtentTest test;
     public static String reportPath;
 
-    public static void initReports() throws Exception {
+    public static void initReports() {
         if(Objects.isNull(extent)){
             extent = new ExtentReports();
             reportPath = FrameworkConstants.getExtentReportPath();
@@ -33,7 +34,7 @@ public final class ExtentReport {
         }
     }
 
-    public static void flushReport() throws Exception {
+    public static void flushReport() {
         if(Objects.nonNull(extent)){
             //TEARDOWN
             extent.flush();
@@ -41,7 +42,12 @@ public final class ExtentReport {
         ExtentManager.unload();
         
         if(PropertyUtils.get(ConfigProperties.OPENREPORTAFTERTEST).equalsIgnoreCase("yes")) {
-        	Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportPath()).toURI());
+        	try {
+				Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportPath()).toURI());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
         
     }

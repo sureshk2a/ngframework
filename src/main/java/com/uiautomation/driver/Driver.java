@@ -1,6 +1,5 @@
 package com.uiautomation.driver;
 
-import com.uiautomation.constants.FrameworkConstants;
 import com.uiautomation.enums.ConfigProperties;
 import com.uiautomation.utils.PropertyUtils;
 
@@ -17,7 +16,7 @@ public final class Driver {
 
     private Driver(){}
 
-    public static void initDriver(String browser) throws Exception {
+    public static void initDriver(String browser)  {
     	
     	if(Objects.isNull(DriverManager.getDriver())) {
     		if(browser.equalsIgnoreCase("chrome")) {

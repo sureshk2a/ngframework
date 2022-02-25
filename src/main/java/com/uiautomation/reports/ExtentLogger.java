@@ -18,21 +18,21 @@ public final class ExtentLogger {
     public static void skip(String message){
         ExtentManager.getExtTest().skip(message);
     }
-    public static void pass(String message,boolean isScreenshotRequired) throws Exception {
+    public static void pass(String message,boolean isScreenshotRequired) {
         if(PropertyUtils.get(ConfigProperties.PASSEDTESTSCREENSHOTS).equalsIgnoreCase("yes")){
             ExtentManager.getExtTest().pass(message, MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
         }else {
             pass(message);
         }
     }
-    public static void fail(String message,boolean isScreenshotRequired) throws Exception {
+    public static void fail(String message,boolean isScreenshotRequired) {
         if(PropertyUtils.get(ConfigProperties.FAILEDTESTSCREENSHOTS).equalsIgnoreCase("yes")){
             ExtentManager.getExtTest().fail(message, MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
         }else {
             fail(message);
         }
     }
-    public static void skip(String message,boolean isScreenshotRequired) throws Exception {
+    public static void skip(String message,boolean isScreenshotRequired) {
         if(PropertyUtils.get(ConfigProperties.SKIPPEDTESTSSCREENSHOTS).equalsIgnoreCase("yes")){
             ExtentManager.getExtTest().skip(message, MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
         }else {

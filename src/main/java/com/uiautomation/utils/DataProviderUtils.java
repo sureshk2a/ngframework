@@ -15,12 +15,17 @@ public final class DataProviderUtils {
 	private static List<Map<String, String>> list = new ArrayList<>();
 	
     @DataProvider
-    public static Object[] getData(Method m) throws IOException {
+    public static Object[] getData(Method m)  {
 
         String testName = m.getName();
         
         if(list.isEmpty()) {
-        	list= ExcelUtils.getTestDetails(FrameworkConstants.getDataSheet());
+        	try {
+				list= ExcelUtils.getTestDetails(FrameworkConstants.getDataSheet());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
 
         List<Map<String, String>> smalllist = new ArrayList<>();

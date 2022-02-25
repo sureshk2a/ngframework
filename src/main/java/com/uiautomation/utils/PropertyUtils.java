@@ -2,8 +2,10 @@ package com.uiautomation.utils;
 
 import com.uiautomation.constants.FrameworkConstants;
 import com.uiautomation.enums.ConfigProperties;
+import com.uiautomation.exceptions.PropertyFileUsageExceptions;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
@@ -25,13 +27,13 @@ public final class PropertyUtils {
 
     }
 
-    public static String get(ConfigProperties key) throws Exception {
+    public static String get(ConfigProperties key) {
 
         if(Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name().toLowerCase()))){
-            throw new Exception("The property "+key+" is not found, please check config.properties");
+            throw new PropertyFileUsageExceptions("The property "+key+" is not found, please check config.properties");
         }
         return CONFIGMAP.get(key.name().toLowerCase());
-
+       
     }
 
 
