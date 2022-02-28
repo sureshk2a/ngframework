@@ -1,4 +1,5 @@
 # Maven
+
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
@@ -20,10 +21,16 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'clean test -Dsurefire.suiteXmlFiles=$(TestngXML)'
+- task: CopyPublishBuildArtifacts@1
+  inputs:
+    CopyRoot: '$(System.DefaultWorkingDirectory)'
+    Contents: '..'
+    ArtifactName: 'Copy files to $(System.ArtifactStagingDirectory)'
+    ArtifactType: 'Container'
+    TargetPath: '$(System.ArtifactStagingDirectory)'
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
     targetPath: 'extent-test-reports/index.html'
     artifact: Report
   continueOnError: true
-
