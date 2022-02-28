@@ -44,3 +44,5 @@ extent-test-reports/
 .project
 .settings/org.eclipse.jdt.core.prefs
 index.html
+/doc/allclasses.html
+doc/
