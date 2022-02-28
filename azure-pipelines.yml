@@ -9,10 +9,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
- - name: TestngXML
-   value: testng.xml
-
 steps:
 - task: Maven@3
   inputs:
