@@ -7,7 +7,11 @@ trigger:
 - main
 
 pool:
-  vmImage: macOS-latest
+  vmImage: ubuntu:latest
+
+variables:
+ - name: TestngXML
+   value: testng.xml
 
 steps:
 - task: Maven@3
@@ -19,7 +23,7 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'test'
+    goals: 'clean test -Dsurefire.suiteXmlFiles=$(TestngXML)'
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
