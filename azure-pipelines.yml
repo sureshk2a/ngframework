@@ -27,13 +27,7 @@ steps:
     Contents: '**'
     TargetFolder: '$(System.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+  inputs: 
+    PathtoPublish: '$(build.artifactstagingdirectory)'
     ArtifactName: 'drop'
-    publishLocation: 'Container'
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish Pipeline Artifact'
-  inputs:
-    targetPath: 'extent-test-reports/index.html'
-    artifact: Report
-  continueOnError: true
+
