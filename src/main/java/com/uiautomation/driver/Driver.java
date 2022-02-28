@@ -12,6 +12,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.Objects;
 
+/**
+ * 
+ * Driver class is responsible for invoking and closing the drivers
+ * 
+ * <p>
+ * It is responsible for setting the driver variable to DriverManager and handles the thread safety of driver instance 
+ * <p>
+ * 
+ * @author Suresh
+ *
+ */
+
 public final class Driver {
 
     private Driver(){}

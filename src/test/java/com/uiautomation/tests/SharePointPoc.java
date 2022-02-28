@@ -173,7 +173,7 @@ public class SharePointPoc {
 			}
 			
 			String filename = filePath.getName();
-			filename = filename.replaceAll("\s", "%20");
+			filename = filename.replaceAll("\\", "%20");
 			System.out.println(filename + " Selected for upload ");
 			String uploadlink = "";
 			uploadlink = siteURL + "/_api/web/GetFolderByServerRelativeUrl(\'" + folderUrl + "/";

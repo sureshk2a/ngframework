@@ -14,23 +14,20 @@ public class Listener implements ITestListener, ISuiteListener {
 
     @Override
     public void onStart(ISuite suite) {
-        try {
-            ExtentReport.initReports();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ExtentReport.initReports();
     }
 
     @Override
     public void onFinish(ISuite suite) {
+ 
+        ExtentReport.flushReport();
         try {
-            ExtentReport.flushReport();
-            EmailUtils.mailTestReport();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+			EmailUtils.mailTestReport();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
     }
 
     @Override
@@ -46,32 +43,21 @@ public class Listener implements ITestListener, ISuiteListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        try {
-            ExtentLogger.pass(result.getMethod().getMethodName()+" is passed",true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ExtentLogger.pass(result.getMethod().getMethodName()+" is passed",true);
+
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        try {
-            ExtentLogger.fail(result.getMethod().getMethodName()+" is failed",true);
-            ExtentLogger.fail(result.getThrowable().toString());
-            ExtentLogger.fail(Arrays.toString(result.getThrowable().getStackTrace()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ExtentLogger.fail(result.getMethod().getMethodName()+" is failed",true);
+        ExtentLogger.fail(result.getThrowable().toString());
+        ExtentLogger.fail(Arrays.toString(result.getThrowable().getStackTrace()));
         //attach screenshot
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        try {
-            ExtentLogger.skip(result.getMethod().getMethodName()+" is skipped",true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ExtentLogger.skip(result.getMethod().getMethodName()+" is skipped",true);
     }
 
     @Override
